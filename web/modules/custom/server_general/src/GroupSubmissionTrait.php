@@ -32,32 +32,34 @@ trait GroupSubmissionTrait {
     $options = ['label' => 'hidden'];
     
     if (!Og::getMembership($entity, $current_user)) {
-      // If not a member of the group show the modal
+      // If not a member of the group show the message
       $element = [];
-      $tmp = $entity
-        ->get($field)->value;
 
-      $button = t(
-        'Hi @name, click here if you would like to subscribe to this group called @label.',
+      // url language version prefix
+      $languagecode = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      $default_languagecode = \Drupal::languageManager()->getDefaultLanguage()->getId();
+      if ($languagecode == $default_languagecode) {
+        $languagecode = '';
+      } else {
+        $languagecode = '/' . $languagecode;
+      }
+
+      // group submission url
+      $here = $languagecode . '/group/node/' . $entity->id() . '/subscribe';
+      
+      $message = t(
+        'Hi @name, click <a href="@here" class="font-bold">here</a> if you would like to subscribe to this group called @label.',
         [
-          '@name' => $current_user->getDisplayName(),
-          '@label' => $entity->title->value,
-        ]);
-
-      $button .= \Drupal\Core\Render\Markup::create(
-        \Drupal::service('renderer')
-        ->render($entity
-          ->get($field)
-          ->view($options)
-        )
-      )->__toString();
+          '@name' => ucfirst($current_user->getDisplayName()),
+          '@label' => ucfirst($entity->title->value),
+          '@here' => $here,
+        ]
+      );
+      
       $element = [
         '#type' => 'html_tag',
         '#tag' => 'div',
-        '#value' => $button,
-        '#attributes' => [
-          'class' => ['hidden', 'modal-trigger'],
-        ],
+        '#value' => $message,
       ];
     } else {
       // otherwise will display membership status with the label hidden
