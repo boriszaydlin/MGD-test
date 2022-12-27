@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\bz_test_task\Plugin\EntityViewBuilder;
+namespace Drupal\server_general\Plugin\EntityViewBuilder;
 
 use Drupal\intl_date\IntlDate;
 use Drupal\media\MediaInterface;

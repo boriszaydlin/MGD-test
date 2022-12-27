@@ -1,7 +1,0 @@
-name: Test task
-type: module
-description: Test task by Boris Zaydlin
-package: Custom
-core_version_requirement: ^8 || ^9 || ^10
-dependencies:
-  - pluggable_entity_view_builder
