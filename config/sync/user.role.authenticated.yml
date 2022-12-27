@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - filter.format.basic_html
+    - node.type.group
   module:
     - comment
     - contact
     - filter
     - media
+    - node
     - shortcut
     - system
 _core:
@@ -22,6 +24,9 @@ permissions:
   - 'access content'
   - 'access shortcuts'
   - 'access site-wide contact form'
+  - 'create group content'
+  - 'delete own group content'
+  - 'edit own group content'
   - 'post comments'
   - 'search content'
   - 'skip comment approval'

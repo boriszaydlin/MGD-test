@@ -2,6 +2,8 @@ uuid: 13ca0114-0815-46bb-8b22-086f079bfc9f
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.group
   module:
     - node
     - system
@@ -14,5 +16,13 @@ permissions:
   - 'access content overview'
   - 'access toolbar'
   - 'administer nodes'
+  - 'create group content'
+  - 'delete any group content'
+  - 'delete group revisions'
+  - 'delete own group content'
+  - 'edit any group content'
+  - 'edit own group content'
+  - 'revert group revisions'
+  - 'view group revisions'
   - 'view own unpublished content'
   - 'view the administration theme'
