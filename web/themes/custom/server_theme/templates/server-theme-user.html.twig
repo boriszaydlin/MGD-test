@@ -18,12 +18,12 @@
     {% endif %}
   </figure>
 
-  <h3 class="line-clamp-3 text-xl font-medium pt-6">{{ name }}</h3>
-  <h4 class="line-clamp-3 text-gray-400 p-0.5">{{ title }}</h4>
+  <h3 class="line-clamp-3 text-sm font-medium pt-6">{{ name }}</h3>
+  <h4 class="line-clamp-3 text-sm text-gray-400 p-0.5">{{ title }}</h4>
   
-  <ul class="flex gap-4 list-none p-4 flex-wrap justify-center">
+  <ul class="flex gap-4 list-none p-3 pb-9 flex-wrap justify-center">
     {% for role in roles %}
-      <li class="py-0.5 px-2 rounded-full bg-green-100 text-green-900 text-small font-medium capitalize">{{ role }}</li>
+      <li class="py-0.5 px-2 rounded-full bg-green-100 text-green-900 text-xs font-medium capitalize">{{ role }}</li>
     {% endfor %}
   </ul>
 
