@@ -343,6 +343,26 @@ function server_theme_theme() {
     ],
   ];
 
+  // Single user.
+  $info['server_theme_user'] = [
+    'variables' => [
+      'image' => NULL,
+      'name' => NULL,
+      'title' => NULL,
+      'roles' => [],
+      'email' => NULL,
+      'phone' => NULL,
+    ],
+  ];
+
+  // Multiple users.
+  $info['server_theme_users'] = [
+    'variables' => [
+      // A list of cards.
+      'items' => [],
+    ],
+  ];
+
   return $info;
 }
 

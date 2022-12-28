@@ -1,0 +1,39 @@
+{#
+  '#theme' => 'server_theme_user',
+  '#image' => $image,
+  '#name' => 'Jane Cooper',
+  '#title' => 'Paradigm Representative',
+  '#roles' => ['admin'],
+  '#email' => 'test@mail.com',
+  '#phone' => '+1 800 555 55 55',
+#}
+
+<div class="rounded-lg w-full overflow-hidden shadow flex flex-col items-center pt-6">
+
+  <figure class="rounded-full truncate">
+    {% if image %}
+      {{ image }}
+    {% else %}
+      <i class="fa fa-lg fa-user text-xl text-gray-200 p-16"></i>
+    {% endif %}
+  </figure>
+
+  <h3 class="line-clamp-3 text-xl font-medium pt-6">{{ name }}</h3>
+  <h4 class="line-clamp-3 text-gray-400 p-0.5">{{ title }}</h4>
+  
+  <ul class="flex gap-4 list-none p-4 flex-wrap justify-center">
+    {% for role in roles %}
+      <li class="py-0.5 px-2 rounded-full bg-green-100 text-green-900 text-small font-medium capitalize">{{ role }}</li>
+    {% endfor %}
+  </ul>
+
+  <div class="flex mt-auto w-full border border-t-gray-200">
+    <a href="mailto:{{ email }}" class="py-4 text-color-gray-700 text-sm font-medium border border-transparent border-r-gray-200 basis-1/2 text-center">
+      <i class="fa fa-lg fa-envelope text-gray-400 p-2"></i> {{ "Email"|t }}
+    </a>
+    <a href="tel:{{ phone }}" class="py-4 text-color-gray-700 text-sm font-medium basis-1/2 text-center">
+      <i class="fa fa-lg fa-phone text-gray-400 p-2"></i> {{ "Call"|t }}
+    </a>
+  </div>
+
+</div>

@@ -118,6 +118,9 @@ class StyleGuideController extends ControllerBase {
     $element = $this->getMediaVideo();
     $build[] = $this->wrapElementWideContainer($element, 'Media: Video');
 
+    $element = $this->getUsers();
+    $build[] = $this->wrapElementWideContainer($element, 'Users');
+
     return $build;
   }
 
@@ -574,6 +577,49 @@ class StyleGuideController extends ControllerBase {
       ] + $element_base;
     }
     return $elements;
+  }
+
+  /**
+   * Get users.
+   *
+   * @return array
+   *   Render array.
+   */
+  protected function getUsers(): array {
+    $image = $this->buildImage($this->getPlaceholderImage(128, 128), 'User image');
+
+    $user = [
+      '#theme' => 'server_theme_user',
+      '#image' => $image,
+      '#name' => 'Jane Cooper',
+      '#title' => 'Paradigm Representative',
+      '#roles' => ['admin'],
+      '#email' => 'test@mail.com',
+      '#phone' => '+1 800 555 55 55',
+    ];
+
+    $single_user_several_roles = $user;
+    $single_user_several_roles['#roles'] = ['admin', 'translator', 'editor'];
+    $single_user_no_image = $user;
+    $single_user_no_image['#image'] = '';
+
+    $items = [
+      $user,
+      $single_user_several_roles,
+      $user,
+      $single_user_no_image,
+      $user,
+      $single_user_several_roles,
+      $single_user_no_image,
+      $user,
+      $single_user_several_roles,
+      $single_user_no_image,
+    ];
+
+    return [
+      '#theme' => 'server_theme_users',
+      '#items' => $items,
+    ];
   }
 
 }
